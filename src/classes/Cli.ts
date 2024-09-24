@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import type Animal from './Animal.js';
+import Animal from './Animal.js';
 import type Employee from './Employee.ts';
 import type ZooAnimals from '../interfaces/ZooAnimals.js';
 import ZooKeeper from './ZooKeeper.js';
@@ -62,7 +62,46 @@ class Cli {
   }
 
   // TODO: Update the startAnimalCli() method to create an Animal object and push to the animals array
-  startAnimalCli(): void {}
+  startAnimalCli(): void {
+    inquirer
+    .prompt([
+      {
+        type: 'input',
+        name: 'species',
+        message: 'What is their species?',
+      },
+      {
+        type: 'confirm',
+        name: 'hungry',
+        message: 'Are they hungry?',
+      },
+      {
+        type: 'number',
+        name: 'weight',
+        message: 'what is their weight?',
+      },
+      {
+        type: 'number',
+        name: 'amount',
+        message: 'how many are there?',
+      }
+    
+    ])
+    .then((res) => {
+      const newAnimal = new Animal (
+        res.species,
+        res.hungry,
+        res.weight,
+        res.amount
+      );
+      console.log(`Please welcome a new animal: ${newAnimal.species}!`);
+      this.animals.push(newAnimal);
+      this.startCli();
+    });
+
+
+
+  }
 
   startEmployeeCli(): void {
     inquirer
@@ -84,7 +123,11 @@ class Cli {
   }
 
   // TODO: Update the startZooKeeperCli() method to create an Employee object and push to the employees array
-  startZooKeeperCli(): void {}
+  startZooKeeperCli(): void {
+
+
+
+  }
 
   startZooWorkerCli(): void {
     inquirer

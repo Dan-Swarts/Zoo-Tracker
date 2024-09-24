@@ -1,6 +1,5 @@
 import ZooAnimals from "../interfaces/ZooAnimals";
 
-
 class Animal implements ZooAnimals {
 
     species: string;
