@@ -1,4 +1,6 @@
 import inquirer from 'inquirer';
+import Animal from './Animal.js';
+import ZooKeeper from './ZooKeeper.js';
 import ZooWorker from './ZooWorker.js';
 // Note that the above are explicitly importing in .js files as the current tsconfig cannot correctly path to the necessary files. The classes will be referred correctly after the dist folder is generated.
 class Cli {
@@ -53,7 +55,37 @@ class Cli {
         });
     }
     // TODO: Update the startAnimalCli() method to create an Animal object and push to the animals array
-    startAnimalCli() { }
+    startAnimalCli() {
+        inquirer
+            .prompt([
+            {
+                type: 'input',
+                name: 'species',
+                message: 'What is their species?',
+            },
+            {
+                type: 'confirm',
+                name: 'hungry',
+                message: 'Are they hungry?',
+            },
+            {
+                type: 'number',
+                name: 'weight',
+                message: 'what is their weight?',
+            },
+            {
+                type: 'number',
+                name: 'amount',
+                message: 'how many are there?',
+            }
+        ])
+            .then((res) => {
+            const newAnimal = new Animal(res.species, res.hungry, res.weight, res.amount);
+            console.log(`Please welcome a new animal: ${newAnimal.species}!`);
+            this.animals.push(newAnimal);
+            this.startCli();
+        });
+    }
     startEmployeeCli() {
         inquirer
             .prompt([
@@ -74,7 +106,42 @@ class Cli {
         });
     }
     // TODO: Update the startZooKeeperCli() method to create an Employee object and push to the employees array
-    startZooKeeperCli() { }
+    startZooKeeperCli() {
+        inquirer
+            .prompt([
+            {
+                type: 'input',
+                name: 'name',
+                message: 'What is their name?',
+            },
+            {
+                type: 'number',
+                name: 'id',
+                message: 'What is their ID number?',
+            },
+            {
+                type: 'input',
+                name: 'title',
+                message: 'What is their title?',
+            },
+            {
+                type: 'number',
+                name: 'salary',
+                message: 'How much do they make?',
+            },
+            {
+                type: 'input',
+                name: 'specialty',
+                message: 'What is their specialty?',
+            }
+        ])
+            .then((res) => {
+            const newZooKeeper = new ZooKeeper(res.name, res.id, res.title, res.salary, res.specialty);
+            console.log(`Please welcome a new zoo keeper: ${newZooKeeper.name}!`);
+            this.employees.push(newZooKeeper);
+            this.startCli();
+        });
+    }
     startZooWorkerCli() {
         inquirer
             .prompt([

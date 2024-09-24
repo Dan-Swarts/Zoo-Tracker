@@ -98,9 +98,6 @@ class Cli {
       this.animals.push(newAnimal);
       this.startCli();
     });
-
-
-
   }
 
   startEmployeeCli(): void {
@@ -124,9 +121,47 @@ class Cli {
 
   // TODO: Update the startZooKeeperCli() method to create an Employee object and push to the employees array
   startZooKeeperCli(): void {
-
-
-
+    inquirer
+      .prompt([
+        {
+          type: 'input',
+          name: 'name',
+          message: 'What is their name?',
+        },
+        {
+          type: 'number',
+          name: 'id',
+          message: 'What is their ID number?',
+        },
+        {
+          type: 'input',
+          name: 'title',
+          message: 'What is their title?',
+        },
+        {
+          type: 'number',
+          name: 'salary',
+          message: 'How much do they make?',
+        },
+        {
+          type: 'input',
+          name: 'specialty',
+          message: 'What is their specialty?',
+        }
+      
+      ])
+        .then((res) => {
+          const newZooKeeper = new ZooKeeper (
+            res.name,
+            res.id,
+            res.title,
+            res.salary,
+            res.specialty
+          );
+          console.log(`Please welcome a new zoo keeper: ${newZooKeeper.name}!`);
+          this.employees.push(newZooKeeper);
+          this.startCli();
+        });
   }
 
   startZooWorkerCli(): void {
