@@ -1,6 +1,6 @@
 import inquirer from 'inquirer';
 import type Animal from './Animal.js';
-import type Employee from './Employee.js';
+import type Employee from './Employee.ts';
 import type ZooAnimals from '../interfaces/ZooAnimals.js';
 import ZooKeeper from './ZooKeeper.js';
 import ZooWorker from './ZooWorker.js';
