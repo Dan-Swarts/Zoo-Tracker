@@ -1,16 +1,19 @@
 class Employee {
-    constructor(
-      name: string,
-      id: number,
-      title: string,
-      salary: number,
-      private pay: number
-    ) {
-      this.pay = pay;
+
+    name: string;
+    id: number;
+    title: string;
+    salary: number;
+
+    constructor(name: string,id: number,title: string, salary: number){
+        this.name = name;
+        this.id = id;
+        this.title = title;
+        this.salary = salary;
     }
   
-    receivePay(): number {
-      return this.pay;
+    receivePay(pay:number): number {
+        return this.salary;
     }
   }
   export default Employee;
