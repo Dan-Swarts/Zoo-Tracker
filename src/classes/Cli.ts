@@ -208,7 +208,18 @@ class Cli {
   }
 
   // TODO: Update the feedAnimals() method to iterate through the animals array and if the animal is hungry, console the species will be fed.
-  feedAnimals(): void {}
+  feedAnimals(): void {
+
+    for(const animal of this.animals) {
+      if (animal.makeRollCall()) {
+        console.log(`${animal.species} is hungry`)
+        animal.hungry = false; 
+      } else {
+        console.log("no one is hungry");
+      }
+       
+    }
+  }
 
   payEmployee(): void {
     inquirer
@@ -226,7 +237,17 @@ class Cli {
       ])
       .then((res) => {
         // TODO: Update the method to iterate through the employees array and find the name of the employee to receive pay.
-      });
+
+        for(const employee of this.employees) {
+
+          if (res.name === employee.name) {
+           
+            console.log(`${employee.name} is getting paid`)
+           employee.salary = res.pay;
+          } else {
+            console.log(`${employee.name} is not getting paid`);
+          }
+      };
   }
 }
 export default Cli;
