@@ -6,6 +6,7 @@ class Employee {
         this.salary = salary;
     }
     receivePay(pay) {
+        this.salary += pay;
         return this.salary;
     }
 }

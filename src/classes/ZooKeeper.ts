@@ -1,4 +1,4 @@
-import Employee from "./Employee";
+import Employee from "./Employee.js";
 
 // TODO: Have the ZooKeeper class inherit Employee properties
 class ZooKeeper extends Employee {

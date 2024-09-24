@@ -212,13 +212,15 @@ class Cli {
 
     for(const animal of this.animals) {
       if (animal.makeRollCall()) {
-        console.log(`${animal.species} is hungry`)
+        console.log(`the ${animal.species}s are hungry`)
         animal.hungry = false; 
       } else {
         console.log("no one is hungry");
       }
        
     }
+
+    this.startCli();
   }
 
   payEmployee(): void {
@@ -241,13 +243,17 @@ class Cli {
         for(const employee of this.employees) {
 
           if (res.name === employee.name) {
-           
-            console.log(`${employee.name} is getting paid`)
-           employee.salary = res.pay;
+
+            let salary = employee.receivePay(res.pay);
+            console.log(`${employee.name} is getting paid ${salary}`);
+            
           } else {
             console.log(`${employee.name} is not getting paid`);
           }
-      };
+        };
+
+        this.startCli();
+      });
   }
 }
 export default Cli;

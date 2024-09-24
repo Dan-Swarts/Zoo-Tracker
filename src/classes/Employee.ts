@@ -13,6 +13,7 @@ class Employee {
     }
   
     receivePay(pay:number): number {
+        this.salary += pay;
         return this.salary;
     }
   }
